@@ -11,7 +11,7 @@ namespace DinnerParty
             List<Guest> guests = GetGuests();
 
             Table tableOne = new Table("Table One");
-            Table tableTwo = new Table("Table Two")
+            Table tableTwo = new Table("Table Two");
 
             foreach (Guest guest in guests)
             {
@@ -41,64 +41,48 @@ namespace DinnerParty
             List<Guest> GetGuests()
             {
 
-                List<Guest> guests = new List<Guest> {
-                    new Guest {
-                        FullName = "Marilyn Monroe",
-                        Occupation = "entertainer",
-                        Bio = new List<string> {
-                            "(1926 - 1962) American actress, singer, model"
-                        }
-                    },
-                    new Guest {
-                        FullName = "Abraham Lincoln",
-                        Occupation = "politician",
-                        Bio = new List<string> {
-                            "(1809 - 1865) US President during American civil war"
-                        }
-                    },
-                    new Guest {
-                        FullName = "Martin Luther King",
-                        Occupation = "activist",
-                        Bio = new List<string> {
-                            "(1929 - 1968)  American civil rights campaigner"
-                        }
-                    },
-                    new Guest {
-                        FullName = "Rosa Parks",
-                        Occupation = "activist",
-                        Bio = new List<string> {
-                            "(1913 - 2005)  American civil rights activist"
-                        }
-                    },
-                    new Guest {
-                        FullName = "Peter Sellers",
-                        Occupation = "entertainer",
-                        Bio = new List<string> {
-                            "(1925 - 1980) British actor and comedian"
-                        }
-                    },
-                    new Guest {
-                        FullName = "Alan Turing",
-                        Occupation = "computer scientist",
-                        Bio = new List<string> {
-                            "(1912 - 1954) - British computing pioneer, Turing machine, algorithms, cryptology, computer architecture, saved the world"
-                        }
-                    },
-                    new Guest {
-                        FullName = "Admiral Grace Hopper",
-                        Occupation = "computer scientist",
-                        Bio = new List<string> {
-                            "(1906–1992) - developed early compilers: FLOW-Matic, COBOL; worked on UNIVAC; gave speeches on computer history, where she gave out nano-seconds"
-                        }
-                    },
-                    new Guest {
-                        FullName = "Indira Gandhi",
-                        Occupation = "politician",
-                        Bio = new List<string> {
-                            "(1917 - 1984) Prime Minister of India 1966 - 1977"
-                        }
-                    }
-                };
+                List<Guest> guests = new List<Guest>(); 
+
+                guests.Add(new Guest(
+                    "Marilyn Monroe",
+                    "entertainer",
+                    "(1926 - 1962) American actress, singer, model"
+                ));
+                guests.Add(new Guest(
+                    "Abraham Lincoln",
+                    "politician",
+                    "(1809 - 1865) US President during American civil war"
+                ));
+                guests.Add(new Guest(
+                    "Martin Luther King",
+                    "activist",
+                    "(1929 - 1968)  American civil rights campaigner"
+                ));
+                guests.Add(new Guest(
+                    "Rosa Parks",
+                    "activist",
+                    "(1913 - 2005)  American civil rights activist"
+                ));
+                guests.Add(new Guest(
+                    "Peter Sellers",
+                    "entertainer",
+                    "(1925 - 1980) British actor and comedian"
+                ));
+                guests.Add(new Guest(
+                    "Alan Turing",
+                    "computer scientist",
+                    "(1912 - 1954) - British computing pioneer, Turing machine, algorithms, cryptology, computer architecture, saved the world"
+                ));
+                guests.Add(new Guest(
+                    "Admiral Grace Hopper",
+                    "computer scientist",
+                    "(1906–1992) - developed early compilers: FLOW-Matic, COBOL; worked on UNIVAC; gave speeches on computer history, where she gave out nano-seconds"
+                ));
+                guests.Add(new Guest(
+                    "Indira Gandhi",
+                    "politician",
+                    "(1917 - 1984) Prime Minister of India 1966 - 1977"
+                ));
 
                 return guests;
             }
@@ -108,14 +92,31 @@ namespace DinnerParty
             {
                 public string Name { get; set; }
                 public string Occupation { get; set; }
-                public string bio { get; set; }
+                public string Bio { get; set; }
+
+                public Guest(string name, string occupation, string bio)
+            {
+                this.Name = name;
+                this.Occupation = occupation;
+                this.Bio = bio;
+            }
             }
 
-            public class Table
+        public class Table
+        {
+            public List<Guest> GuestList { get; set; }
+            public string Name { get; set; }
+
+            public Table(string name)
             {
-            public List<string> Guests { get; set; }
-            public string Name { get; set; } 
+                this.Name = name;
+                this.GuestList = new List<Guest>();
+            } 
+            public void AddGuest(Guest guest)
+            {
+                GuestList.Add(guest);
             }
         }
     }
+}
 
